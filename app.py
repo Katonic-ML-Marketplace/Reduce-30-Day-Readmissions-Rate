@@ -20,7 +20,7 @@ st.set_page_config(
     initial_sidebar_state = 'auto'
 )
 
-st.sidebar.image('logo.png')
+st.sidebar.image('image/logo.png')
 st.sidebar.title('Reduce 30-Day Readmissions Rate')
 st.sidebar.write('---')
 
@@ -32,7 +32,7 @@ This app predicts **Which Patients are at Risk and Allowing Clinicians to Prescr
 st.write('---')
 
 # Loads Dataset
-data_path = 'hospital_readmission.csv'
+data_path = 'data/hospital_readmission.csv'
 data_df = pd.read_csv(data_path, encoding = 'ISO-8859-1')
 data_df = data_df.drop(['weight', 'race', 'admission_source_id', 'gender', 'age', 'A1Cresult', 'metformin', 
 'repaglinide', 'nateglinide', 'chlorpropamide', 'glimepiride', 'acetohexamide', 'glipizide', 
@@ -156,7 +156,7 @@ y = data_df['readmitted']
 
 # to retrain
 agree = st.checkbox('Check to retrain the model')
-filename = 'finalized_model.sav'
+filename = 'model/finalized_model.sav'
 if agree:
     # Build Regression Model
     model = LinearRegression()
