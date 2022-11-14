@@ -1,6 +1,4 @@
 import pickle
-import requests
-from io import BytesIO
 from PIL import Image
 
 import pandas as pd
@@ -10,8 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression
 
 
-response = requests.get(url='https://katonic.ai/favicon.ico')
-im = Image.open(BytesIO(response.content))
+im = Image.open('image/favicon.ico')
 
 st.set_page_config(
     page_title='Reduce 30-Day Readmissions Rate App', 
@@ -183,7 +180,7 @@ if st.sidebar.button('Prediction'):
     st.header('Hospital Readmission Intelligence Predictions')
     label = 'Patient At Risk'  if prediction > 0.5 else 'Patient condition is Normal'
     st.write(f'Prediction Label: **{label}**')
-    st.write(f'Prediction Score: **{prediction}**')
+    st.write(f'Prediction Score: **{prediction[0]}**')
 else:
     st.warning('Please Click on Prediction')
 st.write('---')
